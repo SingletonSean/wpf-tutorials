@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="ResponsiveDesign.Views.UserCardsWrapPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:components="clr-namespace:ResponsiveDesign.Components"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <WrapPanel HorizontalAlignment="Center" ItemWidth="300">
+        <components:UserCard Margin="10" Username="SingletonSean" Age="75" FavoriteColor="Blue"/>
+        <components:UserCard Margin="10" Username="LeBron23" Age="18" FavoriteColor="Red"/>
+        <components:UserCard Margin="10" Username="Mary12" Age="50" FavoriteColor="Green"/>
+    </WrapPanel>
+</UserControl>

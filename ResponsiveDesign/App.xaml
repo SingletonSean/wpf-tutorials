@@ -1,0 +1,20 @@
+﻿<Application x:Class="ResponsiveDesign.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ResponsiveDesign"
+             xmlns:behaviors="clr-namespace:ResponsiveDesign.Behaviors"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="behaviors:ResponsivenessBehavior.IsResponsive" Value="True"/>
+            <Setter Property="behaviors:ResponsivenessBehavior.HorizontalBreakpointSetters">
+                <Setter.Value>
+                    <SetterBaseCollection>
+                        <Setter Property="StackPanel.Orientation" Value="Horizontal"/>
+                        <Setter Property="StackPanel.HorizontalAlignment" Value="Center"/>
+                    </SetterBaseCollection>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

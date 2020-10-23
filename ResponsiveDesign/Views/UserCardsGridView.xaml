@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ResponsiveDesign.Views.UserCardsGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ResponsiveDesign.Views"
+             
+             xmlns:components="clr-namespace:ResponsiveDesign.Components"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid VerticalAlignment="Top" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <components:UserCard Grid.Column="0" Margin="10" Username="SingletonSean" Age="75" FavoriteColor="Blue"/>
+        <components:UserCard Grid.Column="1" Margin="10" Username="LeBron23" Age="18" FavoriteColor="Red"/>
+        <components:UserCard Grid.Column="2" Margin="10" Username="Mary12" Age="50" FavoriteColor="Green"/>
+    </Grid>
+</UserControl>
