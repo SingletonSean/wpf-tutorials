@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:LayoutComponents.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
     x:Name="root"
+    d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.ContentTemplate>
@@ -17,11 +17,9 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Border
-                    Grid.Row="0"
-                    Padding="20"
+                <Border Grid.Row="0" Padding="20"
                     BorderBrush="LightGray"
-                    BorderThickness="0,0,0,1">
+                    BorderThickness="0 0 0 1">
                     <Rectangle
                         Width="50"
                         Height="50"
@@ -35,12 +33,12 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock
-                        Grid.Row="0"
+                    <TextBlock Grid.Row="0"
                         FontSize="24"
                         Text="{Binding Header, ElementName=root}" />
 
-                    <ContentPresenter Grid.Row="1" Margin="0 20 0 0" Content="{TemplateBinding Content}" />
+                    <ContentPresenter Grid.Row="1" Margin="0 20 0 0"
+                        Content="{TemplateBinding Content}" />
                 </Grid>
             </Grid>
         </DataTemplate>

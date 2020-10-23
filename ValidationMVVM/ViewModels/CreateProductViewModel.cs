@@ -70,7 +70,6 @@ namespace ValidationMVVM.ViewModels
                 if(_price > 50)
                 {
                     _errorsViewModel.AddError(nameof(Price), "Invalid price. The max product price is $50.00.");
-                    _errorsViewModel.AddError(nameof(Price), "Invalid price. The max product price is $50.00.");
                 }
 
                 OnPropertyChanged(nameof(Price));

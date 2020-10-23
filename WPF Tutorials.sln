@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncCommands", "AsyncComma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LayoutComponents", "LayoutComponents\LayoutComponents.csproj", "{42F16694-AB6C-4708-83A1-2B544AF0C0E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationMVVM", "ValidationMVVM\ValidationMVVM.csproj", "{0C1889BC-37D6-42C9-8913-1156A3568BFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationMVVM", "ValidationMVVM\ValidationMVVM.csproj", "{0C1889BC-37D6-42C9-8913-1156A3568BFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewMVVM", "CollectionViewFilteringMVVM\CollectionViewMVVM.csproj", "{921CEA53-DFEC-4A9A-8CBE-877F974D8528}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0C1889BC-37D6-42C9-8913-1156A3568BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1889BC-37D6-42C9-8913-1156A3568BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1889BC-37D6-42C9-8913-1156A3568BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
