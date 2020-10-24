@@ -18,7 +18,7 @@
 
         <ListView Grid.Row="1" Margin="0 10 0 0"
             BorderThickness="0"
-            ItemsSource="{Binding EmployeeViewModels}">
+            ItemsSource="{Binding EmployeesCollectionView}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
