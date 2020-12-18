@@ -11,11 +11,8 @@ using System.Windows.Input;
 
 namespace ClassCommands.ViewModels
 {
-    public class BuyViewModel : ViewModelBase
+    public class BuyViewModel : ViewModelBase, ICalculatePriceViewModel
     {
-        private readonly IOwnedItemsStore _ownedItemsStore;
-        private readonly IPriceService _priceService;
-
         public IEnumerable<string> BuyableItems { get; }
 
         private string _itemName;
@@ -86,9 +83,6 @@ namespace ClassCommands.ViewModels
 
         public BuyViewModel(IOwnedItemsStore ownedItemsStore, IPriceService priceService)
         {
-            _ownedItemsStore = ownedItemsStore;
-            _priceService = priceService;
-
             BuyableItems = new ObservableCollection<string>
             {
                 "apple",
@@ -98,36 +92,8 @@ namespace ClassCommands.ViewModels
                 "pillow"
             };
 
-            CalculatePriceCommand = new CallbackCommand(CalculatePrice, () => IsValidBuy);
-            BuyCommand = new CallbackCommand(Buy, () => IsValidBuy);
-        }
-
-        private void CalculatePrice()
-        {
-            StatusMessage = string.Empty;
-            ErrorMessage = string.Empty;
-
-            try
-            {
-                double itemPrice = _priceService.GetPrice(ItemName);
-                double totalPrice = itemPrice * Quantity;
-
-                StatusMessage = $"The total price of { Quantity} { ItemName} is {totalPrice:C}.";
-            }
-            catch (ItemPriceNotFoundException)
-            {
-                ErrorMessage = $"Unable to find price of { ItemName}.";
-            }
-        }
-
-        private void Buy()
-        {
-            StatusMessage = string.Empty;
-            ErrorMessage = string.Empty;
-
-            _ownedItemsStore.Buy(ItemName, Quantity);
-
-            StatusMessage = $"Successfully bought {Quantity} {ItemName}.";
+            CalculatePriceCommand = new CalculatePriceCommand(this, priceService);
+            BuyCommand = new BuyCommand(this, ownedItemsStore);
         }
     }
 }
