@@ -1,0 +1,143 @@
+﻿<Window
+    x:Class="ClassCommands.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ClassCommands"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Class Commands"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid MaxWidth="1000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="20"
+            DataContext="{Binding BuyViewModel}"
+            Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                HorizontalAlignment="Center"
+                FontSize="28"
+                Text="Buy" />
+
+            <Grid Grid.Row="1" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Item" />
+                <ComboBox Grid.Column="1" Margin="10 0 0 0"
+                    ItemsSource="{Binding BuyableItems}"
+                    SelectedItem="{Binding ItemName}" />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Quantity" />
+                <TextBox Grid.Column="1" Margin="10 0 0 0"
+                    Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+            <StackPanel Grid.Row="3" Margin="0 20 0 0"
+                Orientation="Horizontal">
+                <Button Padding="10 5"
+                    Command="{Binding BuyCommand}"
+                    Content="Buy" />
+                <Button Margin="10 0 0 0" Padding="10 5"
+                    Command="{Binding CalculatePriceCommand}"
+                    Content="Calculate Price" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="0 20 0 0"
+                Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="{Binding StatusMessage}" />
+                <TextBlock Foreground="Red" Text="{Binding ErrorMessage}" />
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Column="1"
+            BorderBrush="Gray"
+            BorderThickness="1" />
+
+        <Grid Grid.Column="2" Margin="20"
+            DataContext="{Binding SellViewModel}"
+            Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                HorizontalAlignment="Center"
+                FontSize="28"
+                Text="Sell" />
+
+            <Grid Grid.Row="1" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Item" />
+                <ComboBox Grid.Column="1" Margin="10 0 0 0"
+                    ItemsSource="{Binding SellableItems}"
+                    SelectedItem="{Binding ItemName}" />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Quantity" />
+                <TextBox Grid.Column="1" Margin="10 0 0 0"
+                    Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+            <StackPanel Grid.Row="3" Margin="0 20 0 0"
+                Orientation="Horizontal">
+                <Button Padding="10 5"
+                    Command="{Binding SellCommand}"
+                    Content="Sell" />
+                <Button Margin="10 0 0 0" Padding="10 5"
+                    Command="{Binding CalculatePriceCommand}"
+                    Content="Calculate Price" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="0 20 0 0"
+                Orientation="Horizontal">
+                <TextBlock Foreground="Green" Text="{Binding StatusMessage}" />
+                <TextBlock Foreground="Red" Text="{Binding ErrorMessage}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

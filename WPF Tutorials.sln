@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationMVVM", "Validatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewMVVM", "CollectionViewFilteringMVVM\CollectionViewMVVM.csproj", "{921CEA53-DFEC-4A9A-8CBE-877F974D8528}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassCommands", "ClassCommands\ClassCommands.csproj", "{147959D1-6C84-402A-8E2C-A12BE1E2E280}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{921CEA53-DFEC-4A9A-8CBE-877F974D8528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147959D1-6C84-402A-8E2C-A12BE1E2E280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147959D1-6C84-402A-8E2C-A12BE1E2E280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147959D1-6C84-402A-8E2C-A12BE1E2E280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147959D1-6C84-402A-8E2C-A12BE1E2E280}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
