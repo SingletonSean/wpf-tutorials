@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationMVVM", "Validatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionViewMVVM", "CollectionViewFilteringMVVM\CollectionViewMVVM.csproj", "{921CEA53-DFEC-4A9A-8CBE-877F974D8528}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassCommands", "ClassCommands\ClassCommands.csproj", "{147959D1-6C84-402A-8E2C-A12BE1E2E280}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassCommands", "ClassCommands\ClassCommands.csproj", "{147959D1-6C84-402A-8E2C-A12BE1E2E280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassCommands.Tests", "ClassCommands.Tests\ClassCommands.Tests.csproj", "{7B1C3836-3343-4872-8512-D90FDCE2BD16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassCommands.Tests", "ClassCommands.Tests\ClassCommands.Tests.csproj", "{7B1C3836-3343-4872-8512-D90FDCE2BD16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrayIcon", "TrayIcon\TrayIcon.csproj", "{3EE0B4B7-2932-44D7-B31C-528E7891F84D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{7B1C3836-3343-4872-8512-D90FDCE2BD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1C3836-3343-4872-8512-D90FDCE2BD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1C3836-3343-4872-8512-D90FDCE2BD16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE0B4B7-2932-44D7-B31C-528E7891F84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE0B4B7-2932-44D7-B31C-528E7891F84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE0B4B7-2932-44D7-B31C-528E7891F84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE0B4B7-2932-44D7-B31C-528E7891F84D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
