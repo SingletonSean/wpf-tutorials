@@ -10,8 +10,6 @@ namespace SimpleViewModels.ViewModels
 {
     public class BuyViewModel : ViewModelBase
     {
-        private readonly PriceService _priceService;
-
         public IEnumerable<string> BuyableItems { get; }
 
         private string _itemName;
@@ -80,10 +78,9 @@ namespace SimpleViewModels.ViewModels
         public ICommand CalculatePriceCommand { get; }
         public ICommand BuyCommand { get; }
 
-        public BuyViewModel(PriceService priceService)
+        public BuyViewModel(CreateCommand<BuyViewModel> createCalculatePriceCommand,
+            CreateCommand<BuyViewModel> createBuyCommand)
         {
-            _priceService = priceService;
-
             BuyableItems = new ObservableCollection<string>
             {
                 "apple",
@@ -93,48 +90,11 @@ namespace SimpleViewModels.ViewModels
                 "pillow"
             };
 
-            CalculatePriceCommand = new CallbackCommand(CalculatePrice, () => CanCalculatePrice);
-            BuyCommand = new CallbackCommand(Buy, () => IsValidBuy);
+            CalculatePriceCommand = createCalculatePriceCommand(this);
+            BuyCommand = createBuyCommand(this);
         }
 
-        private void CalculatePrice()
-        {
-            ClearMessages();
-
-            try
-            {
-                double totalPrice = GetTotalPrice();
-                StatusMessage = $"The total price of { Quantity} { ItemName} is {totalPrice:C}.";
-            }
-            catch (ItemPriceNotFoundException)
-            {
-                ErrorMessage = $"Failed to calculate price. Unable to find price of {ItemName}.";
-            }
-        }
-
-        private void Buy()
-        {
-            ClearMessages();
-
-            try
-            {
-                double totalPrice = GetTotalPrice();
-                StatusMessage = $"Successfully bought { Quantity} { ItemName} for {totalPrice:C}.";
-            }
-            catch (ItemPriceNotFoundException)
-            {
-                ErrorMessage = $"Failed to buy item. Unable to find price of {ItemName}.";
-            }
-        }
-
-        private double GetTotalPrice()
-        {
-            double price = _priceService.GetPrice(ItemName);
-
-            return price * Quantity;
-        }
-
-        private void ClearMessages()
+        public void ClearMessages()
         {
             StatusMessage = string.Empty;
             ErrorMessage = string.Empty;
