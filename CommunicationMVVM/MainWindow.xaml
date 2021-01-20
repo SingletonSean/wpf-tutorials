@@ -68,7 +68,7 @@
                 <TextBox
                     Grid.Column="1"
                     Margin="10 0 0 0"
-                    Text="{Binding ProductPrice, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding ProductPrice, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:C}}" />
             </Grid>
 
             <Grid Grid.Row="3" Margin="0 10 0 0">
