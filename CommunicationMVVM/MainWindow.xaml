@@ -1,0 +1,151 @@
+﻿<Window
+    x:Class="CommunicationMVVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CommunicationMVVM"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Communication MVVM"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <Grid MaxWidth="1000">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid
+            Grid.Column="0"
+            Margin="20"
+            DataContext="{Binding CreateProductViewModel}"
+            Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                FontSize="28"
+                Text="Create Product" />
+
+            <Grid Grid.Row="1" Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Name" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="10 0 0 0"
+                    Text="{Binding ProductName, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Price ($)" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="10 0 0 0"
+                    Text="{Binding ProductPrice, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+            <Grid Grid.Row="3" Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" SharedSizeGroup="Label" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Text="Quantity" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="10 0 0 0"
+                    Text="{Binding ProductQuantity, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+            <Button
+                Grid.Row="4"
+                Margin="0 20 0 0"
+                Padding="10 5"
+                HorizontalAlignment="Left"
+                Command="{Binding CreateProductCommand}"
+                Content="Create" />
+        </Grid>
+
+        <Border
+            Grid.Column="1"
+            BorderBrush="Gray"
+            BorderThickness="1" />
+
+        <Grid
+            Grid.Column="2"
+            Margin="20"
+            DataContext="{Binding ProductListingViewModel}"
+            Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                HorizontalAlignment="Left"
+                FontSize="28"
+                Text="Products" />
+
+            <Grid Grid.Row="1" Margin="0 20 0 0">
+                <ListView
+                    BorderThickness="0"
+                    ItemsSource="{Binding Products}"
+                    Visibility="{Binding HasProducts, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                Width="100"
+                                DisplayMemberBinding="{Binding Name}"
+                                Header="Name" />
+                            <GridViewColumn
+                                Width="75"
+                                DisplayMemberBinding="{Binding Price, StringFormat={}{0:C}}"
+                                Header="Price" />
+                            <GridViewColumn
+                                Width="75"
+                                DisplayMemberBinding="{Binding Quantity}"
+                                Header="Quantity" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Text="No products have been created. Please create a product."
+                    Visibility="{Binding HasNoProducts, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>
