@@ -1,4 +1,5 @@
-﻿using CommunicationMVVM.ViewModels;
+﻿using CommunicationMVVM.Stores;
+using CommunicationMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,8 +14,10 @@ namespace CommunicationMVVM
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            CreateProductViewModel createProductViewModel = new CreateProductViewModel();
-            ProductListingViewModel productListingViewModel = new ProductListingViewModel();
+            ProductStore productStore = new ProductStore();
+
+            CreateProductViewModel createProductViewModel = new CreateProductViewModel(productStore);
+            ProductListingViewModel productListingViewModel = new ProductListingViewModel(productStore);
             MainViewModel mainViewModel = new MainViewModel(createProductViewModel, productListingViewModel);
 
             MainWindow = new MainWindow()

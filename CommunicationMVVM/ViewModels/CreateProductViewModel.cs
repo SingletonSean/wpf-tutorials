@@ -1,4 +1,5 @@
 ﻿using CommunicationMVVM.Commands;
+using CommunicationMVVM.Stores;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -52,9 +53,9 @@ namespace CommunicationMVVM.ViewModels
 
         public ICommand CreateProductCommand { get; }
 
-        public CreateProductViewModel()
+        public CreateProductViewModel(ProductStore productStore)
         {
-            CreateProductCommand = new CreateProductCommand();
+            CreateProductCommand = new CreateProductCommand(this, productStore);
         }
     }
 }
