@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrayIcon", "TrayIcon\TrayIc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleViewModels", "SimpleViewModels\SimpleViewModels.csproj", "{775EBD1C-91E1-4F7C-A4A5-DCEB5BF5130E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationMVVM", "CommunicationMVVM\CommunicationMVVM.csproj", "{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationMVVM", "CommunicationMVVM\CommunicationMVVM.csproj", "{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationMVVM", "NavigationMVVM\NavigationMVVM.csproj", "{785A52E9-5073-4681-ACAC-FD86879F44FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
