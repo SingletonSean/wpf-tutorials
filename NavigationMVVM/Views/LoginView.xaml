@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="NavigationMVVM.Views.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:PasswordBoxMVVM.Components;assembly=PasswordBoxMVVM"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NavigationMVVM.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid
+        MaxWidth="1000"
+        Margin="20"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="28"
+            Text="Login" />
+
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            <StackPanel>
+                <TextBlock Text="Username" />
+                <TextBox Text="{Binding Username}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="0 10 0 0">
+                <TextBlock Text="Password" />
+                <components:BindablePasswordBox Password="{Binding Password}" />
+            </StackPanel>
+        </StackPanel>
+
+        <Button
+            Grid.Row="2"
+            Margin="0 20 0 0"
+            Padding="5 2"
+            HorizontalAlignment="Left"
+            Command="{Binding LoginCommand}"
+            Content="Login" />
+    </Grid>
+</UserControl>

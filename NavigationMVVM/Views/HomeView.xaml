@@ -15,16 +15,22 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
+        <TextBlock
+            Grid.Row="0"
             FontSize="28"
             Text="Home" />
 
-        <TextBlock Grid.Row="1" Margin="0 20 0 0"
+        <TextBlock
+            Grid.Row="1"
+            Margin="0 20 0 0"
             Text="{Binding WelcomeMessage}" />
 
-        <Button Grid.Row="2" Margin="0 20 0 0" Padding="5 2"
+        <Button
+            Grid.Row="2"
+            Margin="0 20 0 0"
+            Padding="5 2"
             HorizontalAlignment="Left"
-            Command="{Binding NavigateAccountCommand}"
-            Content="Account" />
+            Command="{Binding NavigateLoginCommand}"
+            Content="Start" />
     </Grid>
 </UserControl>

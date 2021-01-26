@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
+  </ItemGroup>
+
 </Project>
