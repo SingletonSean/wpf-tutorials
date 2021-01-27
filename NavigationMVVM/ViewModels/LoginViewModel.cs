@@ -1,4 +1,5 @@
 ﻿using NavigationMVVM.Commands;
+using NavigationMVVM.Models;
 using NavigationMVVM.Services;
 using NavigationMVVM.Stores;
 using System.Windows.Input;
@@ -37,10 +38,13 @@ namespace NavigationMVVM.ViewModels
 
         public ICommand LoginCommand { get; }
 
-        public LoginViewModel(NavigationStore navigationStore)
+        public LoginViewModel(AccountStore accountStore, NavigationStore navigationStore)
         {
-            LoginCommand = new LoginCommand(this, new NavigationService<AccountViewModel>(
-                navigationStore, () => new AccountViewModel(navigationStore)));
+            NavigationService<AccountViewModel> navigationService = new NavigationService<AccountViewModel>(
+                navigationStore,
+                () => new AccountViewModel(accountStore, navigationStore));
+
+            LoginCommand = new LoginCommand(this, accountStore, navigationService);
         }
     }
 }

@@ -13,16 +13,28 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
+        <TextBlock
+            Grid.Row="0"
             FontSize="28"
             Text="Account" />
 
-        <TextBlock Grid.Row="1" Margin="0 20 0 0"
-            Text="{Binding Name}" />
+        <TextBlock
+            Grid.Row="1"
+            Margin="0 20 0 0"
+            Text="{Binding Username}" />
 
-        <Button Grid.Row="2" Margin="0 20 0 0" Padding="5 2"
+        <TextBlock
+            Grid.Row="2"
+            Margin="0 20 0 0"
+            Text="{Binding Email}" />
+
+        <Button
+            Grid.Row="3"
+            Margin="0 20 0 0"
+            Padding="5 2"
             HorizontalAlignment="Left"
             Command="{Binding NavigateHomeCommand}"
             Content="Home" />

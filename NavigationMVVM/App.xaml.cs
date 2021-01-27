@@ -8,9 +8,10 @@ namespace NavigationMVVM
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            AccountStore accountStore = new AccountStore();
             NavigationStore navigationStore = new NavigationStore();
 
-            navigationStore.CurrentViewModel = new HomeViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new HomeViewModel(accountStore, navigationStore);
 
             MainWindow = new MainWindow()
             {
