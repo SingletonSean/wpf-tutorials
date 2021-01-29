@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleViewModels", "SimpleV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationMVVM", "CommunicationMVVM\CommunicationMVVM.csproj", "{5924A7A7-9AEA-4DBA-8B70-22D2C929F4AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationMVVM", "NavigationMVVM\NavigationMVVM.csproj", "{785A52E9-5073-4681-ACAC-FD86879F44FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NavigationMVVM", "NavigationMVVM\NavigationMVVM.csproj", "{785A52E9-5073-4681-ACAC-FD86879F44FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{78103DCE-869B-43DD-A005-A06DE7B3047C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{785A52E9-5073-4681-ACAC-FD86879F44FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78103DCE-869B-43DD-A005-A06DE7B3047C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78103DCE-869B-43DD-A005-A06DE7B3047C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78103DCE-869B-43DD-A005-A06DE7B3047C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78103DCE-869B-43DD-A005-A06DE7B3047C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
