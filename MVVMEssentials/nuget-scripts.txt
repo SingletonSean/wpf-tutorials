@@ -1,0 +1,6 @@
+# PACKING
+dotnet pack --configuration Release --include-symbols
+
+# PUSHING
+dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k <API_KEY>
+
