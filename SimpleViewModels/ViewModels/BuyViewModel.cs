@@ -78,7 +78,8 @@ namespace SimpleViewModels.ViewModels
         public ICommand CalculatePriceCommand { get; }
         public ICommand BuyCommand { get; }
 
-        public BuyViewModel(CreateCommand<BuyViewModel> createCalculatePriceCommand,
+        public BuyViewModel(
+            CreateCommand<BuyViewModel> createCalculatePriceCommand,
             CreateCommand<BuyViewModel> createBuyCommand)
         {
             BuyableItems = new ObservableCollection<string>

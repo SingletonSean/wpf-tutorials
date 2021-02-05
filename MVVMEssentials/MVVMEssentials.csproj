@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>MVVMEssentials.WPF</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>SingletonSean</Authors>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RepositoryUrl>https://github.com/SingletonSean/wpf-tutorials</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/SingletonSean/wpf-tutorials</PackageProjectUrl>
+    <PackageTags>wpf mvvm essentials command view model notify property changed async errors</PackageTags>
+    <Description>
+      Common essentials for a WPF MVVM applications.
+    </Description>
+  </PropertyGroup>
+
+</Project>
