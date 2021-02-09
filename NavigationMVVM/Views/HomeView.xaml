@@ -12,38 +12,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <components:NavigationBar Grid.Row="0" DataContext="{Binding NavigationBarViewModel}" />
+        <TextBlock
+            Grid.Row="0"
+            FontSize="28"
+            Text="Home" />
 
-        <Grid
+        <TextBlock
             Grid.Row="1"
-            MaxWidth="1000"
-            Margin="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
+            Margin="0 20 0 0"
+            Text="{Binding WelcomeMessage}" />
 
-            <TextBlock
-                Grid.Row="0"
-                FontSize="28"
-                Text="Home" />
-
-            <TextBlock
-                Grid.Row="1"
-                Margin="0 20 0 0"
-                Text="{Binding WelcomeMessage}" />
-
-            <Button
-                Grid.Row="2"
-                Margin="0 20 0 0"
-                Padding="5 2"
-                HorizontalAlignment="Left"
-                Command="{Binding NavigateLoginCommand}"
-                Content="Start" />
-        </Grid>
+        <Button
+            Grid.Row="2"
+            Margin="0 20 0 0"
+            Padding="5 2"
+            HorizontalAlignment="Left"
+            Command="{Binding NavigateLoginCommand}"
+            Content="Start" />
     </Grid>
 </UserControl>
