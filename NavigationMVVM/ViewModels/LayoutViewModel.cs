@@ -14,5 +14,13 @@ namespace NavigationMVVM.ViewModels
             NavigationBarViewModel = navigationBarViewModel;
             ContentViewModel = contentViewModel;
         }
+
+        public override void Dispose()
+        {
+            NavigationBarViewModel.Dispose();
+            ContentViewModel.Dispose();
+
+            base.Dispose();
+        }
     }
 }

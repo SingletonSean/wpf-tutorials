@@ -15,6 +15,7 @@ namespace NavigationMVVM.ViewModels
         public ICommand NavigateHomeCommand { get; }
         public ICommand NavigateAccountCommand { get; }
         public ICommand NavigateLoginCommand { get; }
+        public ICommand LogoutCommand { get; }
 
         public bool IsLoggedIn => _accountStore.IsLoggedIn;
 
@@ -27,6 +28,21 @@ namespace NavigationMVVM.ViewModels
             NavigateHomeCommand = new NavigateCommand<HomeViewModel>(homeNavigationService);
             NavigateAccountCommand = new NavigateCommand<AccountViewModel>(accountNavigationService);
             NavigateLoginCommand = new NavigateCommand<LoginViewModel>(loginNavigationService);
+            LogoutCommand = new LogoutCommand(_accountStore);
+
+            _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;
+        }
+
+        private void OnCurrentAccountChanged()
+        {
+            OnPropertyChanged(nameof(IsLoggedIn));
+        }
+
+        public override void Dispose()
+        {
+            _accountStore.CurrentAccountChanged -= OnCurrentAccountChanged;
+
+            base.Dispose();
         }
     }
 }
