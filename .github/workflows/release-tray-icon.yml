@@ -1,0 +1,31 @@
+name: "Release Tray Icon"
+
+on:
+  push:
+    branches:
+    - "release/tray-icon"
+
+env:
+  PROJECT_PATH: TrayIcon/TrayIcon.csproj
+
+jobs:
+  deploy:
+    name: "Deploy"
+    runs-on: windows-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Install dotnet'
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: 'Restore packages'
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      - name: 'Build'
+        run: dotnet build ${{ env.PROJECT_PATH }} --no-restore -c Release
+
+      - name: 'Publish'
+        run: dotnet publish ${{ env.PROJECT_PATH }} --no-build -c Release --self-contained -r win-x64

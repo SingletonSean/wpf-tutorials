@@ -48,7 +48,7 @@ namespace TrayIcon.Stores
 
             if(_wasRunning && !IsRunning)
             {
-                _notificationService.Notify("Timer", "The timer has completed.", 
+                _notificationService.Notify("Timer", "The timer has completed. Click here to restart the timer.", 
                     3000, NotificationType.RestartTimer, Forms.ToolTipIcon.Info);
             }
 
