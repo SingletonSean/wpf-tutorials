@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
+    <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

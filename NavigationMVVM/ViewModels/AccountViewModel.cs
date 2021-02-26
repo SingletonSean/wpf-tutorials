@@ -15,11 +15,11 @@ namespace NavigationMVVM.ViewModels
 
         public ICommand NavigateHomeCommand { get; }
 
-        public AccountViewModel(AccountStore accountStore, INavigationService<HomeViewModel> homeNavigationService)
+        public AccountViewModel(AccountStore accountStore, INavigationService homeNavigationService)
         {
             _accountStore = accountStore;
 
-            NavigateHomeCommand = new NavigateCommand<HomeViewModel>(homeNavigationService);
+            NavigateHomeCommand = new NavigateCommand(homeNavigationService);
 
             _accountStore.CurrentAccountChanged += OnCurrentAccountChanged;
         }
