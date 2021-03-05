@@ -1,4 +1,5 @@
-﻿using NavigationMVVM.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using NavigationMVVM.Services;
 using NavigationMVVM.Stores;
 using NavigationMVVM.ViewModels;
 using System;
@@ -8,64 +9,86 @@ namespace NavigationMVVM
 {
     public partial class App : Application
     {
-        private readonly AccountStore _accountStore;
-        private readonly NavigationStore _navigationStore;
-        private readonly ModalNavigationStore _modalNavigationStore;
+        private readonly IServiceProvider _serviceProvider;
 
         public App()
         {
-            _accountStore = new AccountStore();
-            _navigationStore = new NavigationStore();
-            _modalNavigationStore = new ModalNavigationStore();
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<AccountStore>();
+            services.AddSingleton<NavigationStore>();
+            services.AddSingleton<ModalNavigationStore>();
+
+            services.AddSingleton<INavigationService>(s => CreateHomeNavigationService(s));
+            services.AddSingleton<CloseModalNavigationService>();
+
+            services.AddTransient<HomeViewModel>(s => new HomeViewModel(CreateLoginNavigationService(s)));
+            services.AddTransient<AccountViewModel>(s => new AccountViewModel(
+                s.GetRequiredService<AccountStore>(),
+                CreateHomeNavigationService(s)));
+            services.AddTransient<LoginViewModel>(CreateLoginViewModel);
+            services.AddSingleton<NavigationBarViewModel>(CreateNavigationBarViewModel);
+            services.AddSingleton<MainViewModel>();
+
+            services.AddSingleton<MainWindow>(s => new MainWindow()
+            {
+                DataContext = s.GetRequiredService<MainViewModel>()
+            });
+
+            _serviceProvider = services.BuildServiceProvider();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            INavigationService homeNavigationService = CreateHomeNavigationService();
-            homeNavigationService.Navigate();
+            INavigationService initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
+            initialNavigationService.Navigate();
 
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(_navigationStore, _modalNavigationStore)
-            };
+            MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
             base.OnStartup(e);
         }
 
-        private INavigationService CreateHomeNavigationService()
+        private INavigationService CreateHomeNavigationService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<HomeViewModel>(
-                _navigationStore,
-                () => new HomeViewModel(CreateLoginNavigationService()),
-                CreateNavigationBarViewModel);
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<HomeViewModel>(),
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
         }
 
-        private INavigationService CreateLoginNavigationService()
+        private INavigationService CreateLoginNavigationService(IServiceProvider serviceProvider)
         {
-            CompositeNavigationService navigationService = new CompositeNavigationService(
-                new CloseModalNavigationService(_modalNavigationStore),
-                CreateAccountNavigationService());
-
             return new ModalNavigationService<LoginViewModel>(
-                _modalNavigationStore,
-                () => new LoginViewModel(_accountStore, navigationService));
+                serviceProvider.GetRequiredService<ModalNavigationStore>(),
+                () => serviceProvider.GetRequiredService<LoginViewModel>());
         }
 
-        private INavigationService CreateAccountNavigationService()
+        private INavigationService CreateAccountNavigationService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<AccountViewModel>(
-                _navigationStore,
-                () => new AccountViewModel(_accountStore, CreateHomeNavigationService()),
-                CreateNavigationBarViewModel);
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<AccountViewModel>(),
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
         }
 
-        private NavigationBarViewModel CreateNavigationBarViewModel()
+        private LoginViewModel CreateLoginViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(_accountStore,
-                CreateHomeNavigationService(),
-                CreateAccountNavigationService(),
-                CreateLoginNavigationService());
+            CompositeNavigationService navigationService = new CompositeNavigationService(
+                serviceProvider.GetRequiredService<CloseModalNavigationService>(),
+                CreateAccountNavigationService(serviceProvider));
+
+            return new LoginViewModel(
+                serviceProvider.GetRequiredService<AccountStore>(),
+                navigationService);
+        }
+
+        private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
+        {
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<AccountStore>(),
+                CreateHomeNavigationService(serviceProvider),
+                CreateAccountNavigationService(serviceProvider),
+                CreateLoginNavigationService(serviceProvider));
         }
     }
 }
