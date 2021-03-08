@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace MVVMEssentials.Commands
 {
-    public abstract class AsyncCommandBase : ICommand
+    public abstract class AsyncCommandBase : CommandBase
     {
         private readonly Action<Exception> _onException;
 
@@ -20,23 +20,21 @@ namespace MVVMEssentials.Commands
             private set
             {
                 _isExecuting = value;
-                CanExecuteChanged?.Invoke(this, new EventArgs());
+                OnCanExecuteChanged();
             }
         }
-
-        public event EventHandler CanExecuteChanged;
 
         public AsyncCommandBase(Action<Exception> onException = null)
         {
             _onException = onException;
         }
 
-        public virtual bool CanExecute(object parameter)
+        public override bool CanExecute(object parameter)
         {
-            return !IsExecuting;
+            return !IsExecuting && base.CanExecute(parameter);
         }
 
-        public async void Execute(object parameter)
+        public override async void Execute(object parameter)
         {
             IsExecuting = true;
 
