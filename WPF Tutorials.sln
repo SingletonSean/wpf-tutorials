@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NavigationMVVM", "Navigatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{78103DCE-869B-43DD-A005-A06DE7B3047C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMEssentials", "MVVMEssentials\MVVMEssentials.csproj", "{A8DD5FE0-69BC-4D8B-94DB-BFF61246120C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVMEssentials", "MVVMEssentials\MVVMEssentials.csproj", "{A8DD5FE0-69BC-4D8B-94DB-BFF61246120C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragDropDemo", "DragDropDemo\DragDropDemo.csproj", "{7049A7DE-6B36-478E-A1B0-772CF63C47C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{A8DD5FE0-69BC-4D8B-94DB-BFF61246120C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8DD5FE0-69BC-4D8B-94DB-BFF61246120C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8DD5FE0-69BC-4D8B-94DB-BFF61246120C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7049A7DE-6B36-478E-A1B0-772CF63C47C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7049A7DE-6B36-478E-A1B0-772CF63C47C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7049A7DE-6B36-478E-A1B0-772CF63C47C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7049A7DE-6B36-478E-A1B0-772CF63C47C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
