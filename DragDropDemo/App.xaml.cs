@@ -16,9 +16,20 @@ namespace DragDropDemo
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            TodoItemListingViewModel inProgressTodoItemListingViewModel = new TodoItemListingViewModel();
+            inProgressTodoItemListingViewModel.AddTodoItem(new TodoItemViewModel("Go jogging"));
+            inProgressTodoItemListingViewModel.AddTodoItem(new TodoItemViewModel("Walk the dog"));
+            inProgressTodoItemListingViewModel.AddTodoItem(new TodoItemViewModel("Make videos"));
+
+            TodoItemListingViewModel completedTodoItemListingViewModel = new TodoItemListingViewModel();
+            completedTodoItemListingViewModel.AddTodoItem(new TodoItemViewModel("Take a shower"));
+            completedTodoItemListingViewModel.AddTodoItem(new TodoItemViewModel("Eat breakfast"));
+
+            TodoViewModel todoViewModel = new TodoViewModel(inProgressTodoItemListingViewModel, completedTodoItemListingViewModel);
+
             MainWindow = new MainWindow()
             {
-                DataContext = new CanvasViewModel()
+                DataContext = todoViewModel
             };
             MainWindow.Show();
 

@@ -10,12 +10,24 @@
     <Compile Update="Views\CanvasView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TodoItemListingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TodoView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\CanvasView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TodoItemListingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TodoView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
