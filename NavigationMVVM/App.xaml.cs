@@ -16,6 +16,7 @@ namespace NavigationMVVM
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<AccountStore>();
+            services.AddSingleton<PeopleStore>();
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
 
@@ -27,6 +28,13 @@ namespace NavigationMVVM
                 s.GetRequiredService<AccountStore>(),
                 CreateHomeNavigationService(s)));
             services.AddTransient<LoginViewModel>(CreateLoginViewModel);
+            services.AddTransient<PeopleListingViewModel>(s => new PeopleListingViewModel(
+                s.GetRequiredService<PeopleStore>(),
+                CreateAddPersonNavigationService(s)));
+            services.AddTransient<AddPersonViewModel>(s => new AddPersonViewModel(
+                s.GetRequiredService<PeopleStore>(),
+                s.GetRequiredService<CloseModalNavigationService>()
+                ));
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
             services.AddSingleton<MainViewModel>();
 
@@ -64,11 +72,26 @@ namespace NavigationMVVM
                 () => serviceProvider.GetRequiredService<LoginViewModel>());
         }
 
+        private INavigationService CreateAddPersonNavigationService(IServiceProvider serviceProvider)
+        {
+            return new ModalNavigationService<AddPersonViewModel>(
+                serviceProvider.GetRequiredService<ModalNavigationStore>(),
+                () => serviceProvider.GetRequiredService<AddPersonViewModel>());
+        }
+
         private INavigationService CreateAccountNavigationService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<AccountViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<AccountViewModel>(),
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
+        }
+
+        private INavigationService CreatePeopleListingNavigationService(IServiceProvider serviceProvider)
+        {
+            return new LayoutNavigationService<PeopleListingViewModel>(
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<PeopleListingViewModel>(),
                 () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
         }
 
@@ -88,7 +111,8 @@ namespace NavigationMVVM
             return new NavigationBarViewModel(serviceProvider.GetRequiredService<AccountStore>(),
                 CreateHomeNavigationService(serviceProvider),
                 CreateAccountNavigationService(serviceProvider),
-                CreateLoginNavigationService(serviceProvider));
+                CreateLoginNavigationService(serviceProvider),
+                CreatePeopleListingNavigationService(serviceProvider));
         }
     }
 }

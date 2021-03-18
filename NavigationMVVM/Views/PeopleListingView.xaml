@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="NavigationMVVM.Views.PeopleListingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:NavigationMVVM.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock FontSize="28" Text="People" />
+            <Button
+                Margin="10 0 0 0"
+                Padding="10 5"
+                VerticalAlignment="Center"
+                Command="{Binding AddPersonCommand}"
+                Content="Add Person" />
+        </StackPanel>
+
+        <ListView
+            Grid.Row="1"
+            Margin="0 20 0 0"
+            ItemsSource="{Binding People}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
