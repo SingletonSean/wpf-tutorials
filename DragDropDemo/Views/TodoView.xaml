@@ -28,7 +28,11 @@
             <local:TodoItemListingView
                 Grid.Row="1"
                 Margin="0 10 0 0"
-                DataContext="{Binding InProgressTodoItemListingViewModel}" />
+                DataContext="{Binding InProgressTodoItemListingViewModel}"
+                IncomingTodoItem="{Binding IncomingTodoItemViewModel}"
+                RemovedTodoItem="{Binding RemovedTodoItemViewModel}"
+                TodoItemDropCommand="{Binding TodoItemReceivedCommand}"
+                TodoItemRemovedCommand="{Binding TodoItemRemovedCommand}" />
         </Grid>
 
         <Grid Grid.Column="1" Margin="20">
@@ -45,7 +49,11 @@
             <local:TodoItemListingView
                 Grid.Row="1"
                 Margin="0 10 0 0"
-                DataContext="{Binding CompletedTodoItemListingViewModel}" />
+                DataContext="{Binding CompletedTodoItemListingViewModel}"
+                IncomingTodoItem="{Binding IncomingTodoItemViewModel}"
+                RemovedTodoItem="{Binding RemovedTodoItemViewModel}"
+                TodoItemDropCommand="{Binding TodoItemReceivedCommand}"
+                TodoItemRemovedCommand="{Binding TodoItemRemovedCommand}" />
         </Grid>
     </Grid>
 </UserControl>

@@ -5,11 +5,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:DragDropDemo.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="root"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ListView ItemsSource="{Binding TodoItemViewModels}">
+        <ListView
+            AllowDrop="True"
+            DragLeave="TodoItemList_DragLeave"
+            Drop="TodoItemList_Drop"
+            ItemsSource="{Binding TodoItemViewModels}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="IsHitTestVisible" Value="{Binding IsTodoItemHitTestVisible, ElementName=root}" />
+
+                    <EventSetter Event="MouseMove" Handler="TodoItem_MouseMove" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Description}" />
