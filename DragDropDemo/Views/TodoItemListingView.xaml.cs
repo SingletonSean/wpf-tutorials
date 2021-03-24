@@ -79,18 +79,33 @@ namespace DragDropDemo.Views
                 sender is FrameworkElement frameworkElement)
             {
                 IsTodoItemHitTestVisible = false;
-                DragDrop.DoDragDrop(frameworkElement, 
-                    new DataObject(DataFormats.Serializable, frameworkElement.DataContext), 
+
+                object todoItem = frameworkElement.DataContext;
+
+                DragDropEffects dragDropResult = DragDrop.DoDragDrop(frameworkElement, 
+                    new DataObject(DataFormats.Serializable, todoItem), 
                     DragDropEffects.Move);
+
+                if(dragDropResult == DragDropEffects.None)
+                {
+                    AddTodoItem(todoItem);
+                }
+
                 IsTodoItemHitTestVisible = true;
             }
         }
 
         private void TodoItemList_Drop(object sender, DragEventArgs e)
         {
-            if(TodoItemDropCommand?.CanExecute(null) ?? false)
+            object todoItem = e.Data.GetData(DataFormats.Serializable);
+            AddTodoItem(todoItem);
+        }
+
+        private void AddTodoItem(object todoItem)
+        {
+            if (TodoItemDropCommand?.CanExecute(null) ?? false)
             {
-                IncomingTodoItem = e.Data.GetData(DataFormats.Serializable);
+                IncomingTodoItem = todoItem;
                 TodoItemDropCommand?.Execute(null);
             }
         }
