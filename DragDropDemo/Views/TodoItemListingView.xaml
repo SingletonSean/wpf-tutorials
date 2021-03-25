@@ -11,15 +11,15 @@
     mc:Ignorable="d">
     <Grid>
         <ListView
+            x:Name="lvItems"
             AllowDrop="True"
             DragLeave="TodoItemList_DragLeave"
-            Drop="TodoItemList_Drop"
+            DragOver="TodoItemList_DragOver"
             ItemsSource="{Binding TodoItemViewModels}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="IsHitTestVisible" Value="{Binding IsTodoItemHitTestVisible, ElementName=root}" />
-
                     <EventSetter Event="MouseMove" Handler="TodoItem_MouseMove" />
+                    <EventSetter Event="DragOver" Handler="TodoItem_DragOver" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>

@@ -42,8 +42,37 @@ namespace DragDropDemo.ViewModels
             }
         }
 
+        private TodoItemViewModel _insertedTodoItemViewModel;
+        public TodoItemViewModel InsertedTodoItemViewModel
+        {
+            get
+            {
+                return _insertedTodoItemViewModel;
+            }
+            set
+            {
+                _insertedTodoItemViewModel = value;
+                OnPropertyChanged(nameof(InsertedTodoItemViewModel));
+            }
+        }
+
+        private TodoItemViewModel _targetTodoItemViewModel;
+        public TodoItemViewModel TargetTodoItemViewModel
+        {
+            get
+            {
+                return _targetTodoItemViewModel;
+            }
+            set
+            {
+                _targetTodoItemViewModel = value;
+                OnPropertyChanged(nameof(TargetTodoItemViewModel));
+            }
+        }
+
         public ICommand TodoItemReceivedCommand { get; }
         public ICommand TodoItemRemovedCommand { get; }
+        public ICommand TodoItemInsertedCommand { get; }
 
         public TodoItemListingViewModel()
         {
@@ -51,6 +80,7 @@ namespace DragDropDemo.ViewModels
 
             TodoItemReceivedCommand = new TodoItemReceivedCommand(this);
             TodoItemRemovedCommand = new TodoItemRemovedCommand(this);
+            TodoItemInsertedCommand = new TodoItemInsertedCommand(this);
         }
 
         public void AddTodoItem(TodoItemViewModel item)
@@ -58,6 +88,22 @@ namespace DragDropDemo.ViewModels
             if(!_todoItemViewModels.Contains(item))
             {
                 _todoItemViewModels.Add(item);
+            }
+        }
+
+        public void InsertTodoItem(TodoItemViewModel insertedTodoItem, TodoItemViewModel targetTodoItem)
+        {
+            if(insertedTodoItem == targetTodoItem)
+            {
+                return;
+            }
+
+            int oldIndex = _todoItemViewModels.IndexOf(insertedTodoItem);
+            int nextIndex = _todoItemViewModels.IndexOf(targetTodoItem);
+
+            if(oldIndex != -1 && nextIndex != -1)
+            {
+                _todoItemViewModels.Move(oldIndex, nextIndex);
             }
         }
 

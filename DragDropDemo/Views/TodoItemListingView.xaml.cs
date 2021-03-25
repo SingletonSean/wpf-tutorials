@@ -18,16 +18,6 @@ namespace DragDropDemo.Views
     /// </summary>
     public partial class TodoItemListingView : UserControl
     {
-        public static readonly DependencyProperty IsTodoItemHitTestVisibleProperty =
-            DependencyProperty.Register("IsTodoItemHitTestVisible", typeof(bool), typeof(TodoItemListingView), 
-                new PropertyMetadata(true));
-
-        public bool IsTodoItemHitTestVisible
-        {
-            get { return (bool)GetValue(IsTodoItemHitTestVisibleProperty); }
-            set { SetValue(IsTodoItemHitTestVisibleProperty, value); }
-        }
-
         public static readonly DependencyProperty IncomingTodoItemProperty =
             DependencyProperty.Register("IncomingTodoItem", typeof(object), typeof(TodoItemListingView), 
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
@@ -68,6 +58,36 @@ namespace DragDropDemo.Views
             set { SetValue(TodoItemRemovedCommandProperty, value); }
         }
 
+        public static readonly DependencyProperty TodoItemInsertedCommandProperty =
+            DependencyProperty.Register("TodoItemInsertedCommand", typeof(ICommand), typeof(TodoItemListingView), 
+                new PropertyMetadata(null));
+
+        public ICommand TodoItemInsertedCommand
+        {
+            get { return (ICommand)GetValue(TodoItemInsertedCommandProperty); }
+            set { SetValue(TodoItemInsertedCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty InsertedTodoItemProperty =
+            DependencyProperty.Register("InsertedTodoItem", typeof(object), typeof(TodoItemListingView),
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public object InsertedTodoItem
+        {
+            get { return (object)GetValue(InsertedTodoItemProperty); }
+            set { SetValue(InsertedTodoItemProperty, value); }
+        }
+
+        public static readonly DependencyProperty TargetTodoItemProperty =
+            DependencyProperty.Register("TargetTodoItem", typeof(object), typeof(TodoItemListingView), 
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public object TargetTodoItem
+        {
+            get { return (object)GetValue(TargetTodoItemProperty); }
+            set { SetValue(TargetTodoItemProperty, value); }
+        }
+
         public TodoItemListingView()
         {
             InitializeComponent();
@@ -78,8 +98,6 @@ namespace DragDropDemo.Views
             if(e.LeftButton == MouseButtonState.Pressed &&
                 sender is FrameworkElement frameworkElement)
             {
-                IsTodoItemHitTestVisible = false;
-
                 object todoItem = frameworkElement.DataContext;
 
                 DragDropEffects dragDropResult = DragDrop.DoDragDrop(frameworkElement, 
@@ -90,12 +108,24 @@ namespace DragDropDemo.Views
                 {
                     AddTodoItem(todoItem);
                 }
-
-                IsTodoItemHitTestVisible = true;
             }
         }
 
-        private void TodoItemList_Drop(object sender, DragEventArgs e)
+        private void TodoItem_DragOver(object sender, DragEventArgs e)
+        {
+            if (TodoItemInsertedCommand?.CanExecute(null) ?? false)
+            {
+                if(sender is FrameworkElement element)
+                {
+                    TargetTodoItem = element.DataContext;
+                    InsertedTodoItem = e.Data.GetData(DataFormats.Serializable);
+
+                    TodoItemInsertedCommand?.Execute(null);
+                }
+            }
+        }
+
+        private void TodoItemList_DragOver(object sender, DragEventArgs e)
         {
             object todoItem = e.Data.GetData(DataFormats.Serializable);
             AddTodoItem(todoItem);
@@ -112,11 +142,16 @@ namespace DragDropDemo.Views
 
         private void TodoItemList_DragLeave(object sender, DragEventArgs e)
         {
-            if (TodoItemRemovedCommand?.CanExecute(null) ?? false)
+            HitTestResult result = VisualTreeHelper.HitTest(lvItems, e.GetPosition(lvItems));
+
+            if(result == null)
             {
-                RemovedTodoItem = e.Data.GetData(DataFormats.Serializable);
-                TodoItemRemovedCommand?.Execute(null);
-            }
+                if (TodoItemRemovedCommand?.CanExecute(null) ?? false)
+                {
+                    RemovedTodoItem = e.Data.GetData(DataFormats.Serializable);
+                    TodoItemRemovedCommand?.Execute(null);
+                }
+            }    
         }
     }
 }

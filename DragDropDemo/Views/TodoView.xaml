@@ -30,8 +30,11 @@
                 Margin="0 10 0 0"
                 DataContext="{Binding InProgressTodoItemListingViewModel}"
                 IncomingTodoItem="{Binding IncomingTodoItemViewModel}"
+                InsertedTodoItem="{Binding InsertedTodoItemViewModel}"
                 RemovedTodoItem="{Binding RemovedTodoItemViewModel}"
+                TargetTodoItem="{Binding TargetTodoItemViewModel}"
                 TodoItemDropCommand="{Binding TodoItemReceivedCommand}"
+                TodoItemInsertedCommand="{Binding TodoItemInsertedCommand}"
                 TodoItemRemovedCommand="{Binding TodoItemRemovedCommand}" />
         </Grid>
 
@@ -51,8 +54,11 @@
                 Margin="0 10 0 0"
                 DataContext="{Binding CompletedTodoItemListingViewModel}"
                 IncomingTodoItem="{Binding IncomingTodoItemViewModel}"
+                InsertedTodoItem="{Binding InsertedTodoItemViewModel}"
                 RemovedTodoItem="{Binding RemovedTodoItemViewModel}"
+                TargetTodoItem="{Binding TargetTodoItemViewModel}"
                 TodoItemDropCommand="{Binding TodoItemReceivedCommand}"
+                TodoItemInsertedCommand="{Binding TodoItemInsertedCommand}"
                 TodoItemRemovedCommand="{Binding TodoItemRemovedCommand}" />
         </Grid>
     </Grid>
