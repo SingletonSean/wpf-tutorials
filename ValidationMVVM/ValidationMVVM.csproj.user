@@ -10,9 +10,15 @@
     <Compile Update="Views\CreateProductView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\IPAddressView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\CreateProductView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\IPAddressView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

@@ -12,6 +12,6 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
-        <local:CreateProductView DataContext="{Binding CreateProductViewModel}" />
+        <local:IPAddressView DataContext="{Binding IPAddressViewModel}" />
     </Grid>
 </Window>
