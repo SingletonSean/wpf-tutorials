@@ -10,47 +10,10 @@
     FontSize="18"
     mc:Ignorable="d">
 
-    <Grid Margin="50 25"
+    <Grid
         MaxWidth="1000"
+        Margin="50 25"
         Grid.IsSharedSizeScope="True">
-        <Grid.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="Padding" Value="2 1" />
-                <Setter Property="BorderBrush" Value="LightGray" />
-                <Setter Property="Validation.ErrorTemplate">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <StackPanel>
-                                <AdornedElementPlaceholder />
-                                <ItemsControl Margin="0 5 0 0"
-                                    FontSize="12"
-                                    ItemsSource="{Binding}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Foreground="Red" Text="{Binding ErrorContent}" />
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBox">
-                            <StackPanel>
-                                <Border Padding="{TemplateBinding Padding}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="3">
-                                    <ScrollViewer x:Name="PART_ContentHost" />
-                                </Border>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -62,7 +25,8 @@
         </Grid.RowDefinitions>
 
         <!--  Header  -->
-        <TextBlock Grid.Row="0"
+        <TextBlock
+            Grid.Row="0"
             FontSize="32"
             Text="Create Product" />
 
@@ -74,7 +38,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Id" />
-            <TextBox Grid.Column="1" Margin="20 0 0 0"
+            <TextBox
+                Grid.Column="1"
+                Margin="20 0 0 0"
                 Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
@@ -86,7 +52,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Name" />
-            <TextBox Grid.Column="1" Margin="20 0 0 0"
+            <TextBox
+                Grid.Column="1"
+                Margin="20 0 0 0"
                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
@@ -98,7 +66,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Description" />
-            <TextBox Grid.Column="1" Margin="20 0 0 0"
+            <TextBox
+                Grid.Column="1"
+                Margin="20 0 0 0"
                 Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
@@ -110,12 +80,17 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Price" />
-            <TextBox Grid.Column="1" Margin="20 0 0 0"
+            <TextBox
+                Grid.Column="1"
+                Margin="20 0 0 0"
                 Text="{Binding Price, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:C}}" />
         </Grid>
 
         <!--  Create Button  -->
-        <Button Grid.Row="5" Margin="0 25 0 0" Padding="10 5"
+        <Button
+            Grid.Row="5"
+            Margin="0 25 0 0"
+            Padding="10 5"
             HorizontalAlignment="Left"
             Command="{Binding CreateProductCommand}"
             Content="Create"
@@ -128,7 +103,8 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border Padding="{TemplateBinding Padding}"
+                                <Border
+                                    Padding="{TemplateBinding Padding}"
                                     Background="{TemplateBinding Background}"
                                     CornerRadius="5"
                                     TextBlock.Foreground="{TemplateBinding Foreground}">
