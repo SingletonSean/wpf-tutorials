@@ -15,13 +15,16 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"
+        <TextBlock
+            Grid.Row="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontSize="96"
             Text="{Binding RemainingSeconds, StringFormat=N0}" />
 
-        <StackPanel Grid.Row="1" Margin="20"
+        <StackPanel
+            Grid.Row="1"
+            Margin="20"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Horizontal">
@@ -31,7 +34,9 @@
                 VerticalContentAlignment="Center"
                 Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" />
 
-            <Button Margin="10 0 0 0" Padding="10 5"
+            <Button
+                Margin="10 0 0 0"
+                Padding="10 5"
                 Command="{Binding StartCommand}"
                 Content="Start" />
         </StackPanel>
