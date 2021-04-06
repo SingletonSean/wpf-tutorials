@@ -1,0 +1,59 @@
+﻿<UserControl
+    x:Class="StateMVVM.Components.Layout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StateMVVM.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Background="CornflowerBlue"
+                DataContext="{Binding NavigationBarViewModel}"
+                TextBlock.Foreground="White">
+                <Grid MaxWidth="800" Margin="20 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Text="State Management Demo" />
+
+                    <Button
+                        Grid.Column="1"
+                        Margin="10 0 0 0"
+                        Padding="10 5"
+                        Command="{Binding NavigatePostHomeCommand}"
+                        Content="Home" />
+
+                    <Button
+                        Grid.Column="2"
+                        Margin="10 0 0 0"
+                        Padding="10 5"
+                        Command="{Binding NavigatePostListingCommand}"
+                        Content="Posts" />
+                </Grid>
+            </Grid>
+
+            <ContentControl
+                Grid.Row="1"
+                MaxWidth="800"
+                Margin="20"
+                Content="{Binding ContentViewModel}" />
+        </Grid>
+    </ScrollViewer>
+</UserControl>
