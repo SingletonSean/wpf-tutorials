@@ -1,4 +1,5 @@
-﻿using StateMVVM.Services.Navigations;
+﻿using StateMVVM.Services;
+using StateMVVM.Services.Navigations;
 using StateMVVM.Stores;
 using StateMVVM.ViewModels;
 using StateMVVM.ViewModels.Posts;
@@ -9,10 +10,12 @@ namespace StateMVVM
     public partial class App : Application
     {
         private readonly NavigationStore _navigationStore;
+        private readonly PostStore _postStore;
 
         public App()
         {
             _navigationStore = new NavigationStore();
+            _postStore = new PostStore(new PostService());
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -33,13 +36,13 @@ namespace StateMVVM
         private PostHomeViewModel CreatePostHomeViewModel()
         {
             return new PostHomeViewModel(
-                new CreatePostViewModel(),
-                new RecentPostListingViewModel());
+                new CreatePostViewModel(_postStore),
+                RecentPostListingViewModel.LoadViewModel(_postStore));
         }
 
         private PostListingViewModel CreatePostListingViewModel()
         {
-            return new PostListingViewModel();
+            return PostListingViewModel.LoadViewModel(_postStore);
         }
 
         private INavigationService CreatePostHomeNavigationService()

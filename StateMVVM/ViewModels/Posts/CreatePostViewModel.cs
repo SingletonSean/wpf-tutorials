@@ -1,5 +1,6 @@
 ﻿using MVVMEssentials.ViewModels;
 using StateMVVM.Commands;
+using StateMVVM.Stores;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,9 +40,9 @@ namespace StateMVVM.ViewModels.Posts
 
         public ICommand CreatePostCommand { get; }
 
-        public CreatePostViewModel()
+        public CreatePostViewModel(PostStore postStore)
         {
-            CreatePostCommand = new CreatePostCommand(this);
+            CreatePostCommand = new CreatePostCommand(this, postStore);
         }
     }
 }
