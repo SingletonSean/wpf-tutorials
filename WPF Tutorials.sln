@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReusableUserControls", "Reu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateMVVM", "StateMVVM\StateMVVM.csproj", "{4A03ADBC-6E4B-422F-BA41-4A568FAF0DDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObservableCollections", "CustomObservableCollections\CustomObservableCollections.csproj", "{EB0E1AFE-A11F-4350-8FFF-5B8F5471F51A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomObservableCollections", "CustomObservableCollections\CustomObservableCollections.csproj", "{EB0E1AFE-A11F-4350-8FFF-5B8F5471F51A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationDemo", "AnimationDemo\AnimationDemo.csproj", "{1C91809C-C442-4258-90DD-1372BC51B49F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{EB0E1AFE-A11F-4350-8FFF-5B8F5471F51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB0E1AFE-A11F-4350-8FFF-5B8F5471F51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB0E1AFE-A11F-4350-8FFF-5B8F5471F51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C91809C-C442-4258-90DD-1372BC51B49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C91809C-C442-4258-90DD-1372BC51B49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C91809C-C442-4258-90DD-1372BC51B49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C91809C-C442-4258-90DD-1372BC51B49F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
