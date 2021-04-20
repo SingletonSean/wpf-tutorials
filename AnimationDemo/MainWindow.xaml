@@ -12,6 +12,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -47,7 +48,9 @@
                     <CheckBox
                         x:Name="cbDropdown"
                         Grid.Column="1"
-                        RenderTransformOrigin="0.5 0.5">
+                        Checked="OpenDropdown"
+                        RenderTransformOrigin="0.5 0.5"
+                        Unchecked="CloseDropdown">
                         <CheckBox.Template>
                             <ControlTemplate TargetType="CheckBox">
                                 <Grid Background="Transparent">
@@ -60,16 +63,32 @@
                                 </Grid>
                             </ControlTemplate>
                         </CheckBox.Template>
+                        <CheckBox.RenderTransform>
+                            <RotateTransform Angle="0" />
+                        </CheckBox.RenderTransform>
                         <CheckBox.Style>
                             <Style TargetType="CheckBox">
                                 <Style.Triggers>
-                                    <Trigger Property="IsChecked" Value="True">
-                                        <Setter Property="RenderTransform">
-                                            <Setter.Value>
-                                                <RotateTransform Angle="180" />
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
+                                    <EventTrigger RoutedEvent="Checked">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)"
+                                                    To="180"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="Unchecked">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)"
+                                                    To="0"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
                                 </Style.Triggers>
                             </Style>
                         </CheckBox.Style>
@@ -79,19 +98,39 @@
 
             <!--  Dropdown  -->
             <Border
+                x:Name="dropdownContent"
                 Grid.Row="1"
-                Background="#f0f0f0"
-                Visibility="{Binding IsChecked, ElementName=cbDropdown, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <StackPanel>
+                Background="#f0f0f0">
+                <StackPanel x:Name="dropdownInnerContent">
                     <StackPanel.Resources>
                         <Style TargetType="TextBlock">
                             <Setter Property="MaxWidth" Value="500" />
                         </Style>
                         <Style TargetType="Border">
                             <Setter Property="Padding" Value="20 10" />
+                            <Setter Property="Background" Value="Transparent" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#dbdbdb" />
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                    To="#dbdbdb"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation
+                                                    Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                    To="Transparent"
+                                                    Duration="0:0:0.2" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
