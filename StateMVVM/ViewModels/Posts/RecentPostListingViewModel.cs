@@ -1,4 +1,5 @@
 ﻿using MVVMEssentials.ViewModels;
+using StateMVVM.Commands;
 using StateMVVM.Models;
 using StateMVVM.Stores;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace StateMVVM.ViewModels.Posts
 {
@@ -20,6 +22,8 @@ namespace StateMVVM.ViewModels.Posts
 
         public bool HasPosts => _posts.Count > 0;
 
+        public ICommand LoadPostsCommand { get; }
+
         public RecentPostListingViewModel(PostStore postStore)
         {
             _postStore = postStore;
@@ -30,28 +34,16 @@ namespace StateMVVM.ViewModels.Posts
             _postStore.PostCreated += PostStore_PostCreated;
             _postStore.PostsLoaded += UpdatePosts;
 
-            UpdatePosts();
+            LoadPostsCommand = new LoadPostsCommand(_postStore);
         }
 
-        public static RecentPostListingViewModel LoadViewModel(PostStore postStore, Action<Task> onLoaded = null)
+        public static RecentPostListingViewModel LoadViewModel(PostStore postStore)
         {
             RecentPostListingViewModel viewModel = new RecentPostListingViewModel(postStore);
 
-            viewModel.LoadPosts().ContinueWith(t => onLoaded?.Invoke(t));
+            viewModel.LoadPostsCommand.Execute(null);
 
             return viewModel;
-        }
-
-        public async Task LoadPosts()
-        {
-            try
-            {
-                await _postStore.LoadPosts();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         public override void Dispose()

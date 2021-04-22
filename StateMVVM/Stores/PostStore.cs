@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StateMVVM.Stores
 {
@@ -31,7 +32,6 @@ namespace StateMVVM.Stores
         {
             await _loadPostsLazy.Value;
         }
-
         public async Task RefreshPosts()
         {
             _loadPostsLazy = CreateLoadPostsLazy();

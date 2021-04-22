@@ -10,6 +10,8 @@ namespace StateMVVM.Services
     {
         public Task<IEnumerable<Post>> GetAllPosts()
         {
+            throw new Exception();
+
             IEnumerable<Post> posts = new List<Post>()
             {
                 new Post()
