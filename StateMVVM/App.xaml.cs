@@ -11,11 +11,13 @@ namespace StateMVVM
     {
         private readonly NavigationStore _navigationStore;
         private readonly PostStore _postStore;
+        private readonly MessageStore _messageStore;
 
         public App()
         {
             _navigationStore = new NavigationStore();
             _postStore = new PostStore(new PostService());
+            _messageStore = new MessageStore();
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -36,19 +38,20 @@ namespace StateMVVM
         private PostHomeViewModel CreatePostHomeViewModel()
         {
             return new PostHomeViewModel(
-                new CreatePostViewModel(_postStore),
-                RecentPostListingViewModel.LoadViewModel(_postStore));
+                new CreatePostViewModel(_postStore, _messageStore),
+                RecentPostListingViewModel.LoadViewModel(_postStore, _messageStore));
         }
 
         private PostListingViewModel CreatePostListingViewModel()
         {
-            return PostListingViewModel.LoadViewModel(_postStore);
+            return PostListingViewModel.LoadViewModel(_postStore, _messageStore);
         }
 
         private INavigationService CreatePostHomeNavigationService()
         {
             return new LayoutNavigationService<PostHomeViewModel>(_navigationStore,
                 CreatePostHomeViewModel,
+                CreateGlobalMessageViewModel,
                 CreateNavigationBarViewModel);
         }
 
@@ -56,6 +59,7 @@ namespace StateMVVM
         {
             return new LayoutNavigationService<PostListingViewModel>(_navigationStore,
                 CreatePostListingViewModel,
+                CreateGlobalMessageViewModel,
                 CreateNavigationBarViewModel);
         }
 
@@ -64,6 +68,11 @@ namespace StateMVVM
             return new NavigationBarViewModel(
                 CreatePostHomeNavigationService(),
                 CreatePostListingNavigationService());
+        }
+
+        private GlobalMessageViewModel CreateGlobalMessageViewModel()
+        {
+            return new GlobalMessageViewModel(_messageStore);
         }
     }
 }

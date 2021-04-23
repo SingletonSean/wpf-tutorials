@@ -40,9 +40,9 @@ namespace StateMVVM.ViewModels.Posts
 
         public ICommand CreatePostCommand { get; }
 
-        public CreatePostViewModel(PostStore postStore)
+        public CreatePostViewModel(PostStore postStore, MessageStore messageStore)
         {
-            CreatePostCommand = new CreatePostCommand(this, postStore);
+            CreatePostCommand = new CreatePostCommand(this, postStore, messageStore);
         }
     }
 }

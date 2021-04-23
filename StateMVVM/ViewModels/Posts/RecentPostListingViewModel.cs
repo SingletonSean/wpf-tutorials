@@ -24,7 +24,7 @@ namespace StateMVVM.ViewModels.Posts
 
         public ICommand LoadPostsCommand { get; }
 
-        public RecentPostListingViewModel(PostStore postStore)
+        public RecentPostListingViewModel(PostStore postStore, MessageStore messageStore)
         {
             _postStore = postStore;
 
@@ -34,12 +34,12 @@ namespace StateMVVM.ViewModels.Posts
             _postStore.PostCreated += PostStore_PostCreated;
             _postStore.PostsLoaded += UpdatePosts;
 
-            LoadPostsCommand = new LoadPostsCommand(_postStore);
+            LoadPostsCommand = new LoadPostsCommand(_postStore, messageStore);
         }
 
-        public static RecentPostListingViewModel LoadViewModel(PostStore postStore)
+        public static RecentPostListingViewModel LoadViewModel(PostStore postStore, MessageStore messageStore)
         {
-            RecentPostListingViewModel viewModel = new RecentPostListingViewModel(postStore);
+            RecentPostListingViewModel viewModel = new RecentPostListingViewModel(postStore, messageStore);
 
             viewModel.LoadPostsCommand.Execute(null);
 

@@ -12,6 +12,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -49,8 +50,10 @@
                 </Grid>
             </Grid>
 
+            <local:GlobalMessageBanner Grid.Row="1" DataContext="{Binding GlobalMessageViewModel}" />
+
             <ContentControl
-                Grid.Row="1"
+                Grid.Row="2"
                 MaxWidth="800"
                 Margin="20"
                 Content="{Binding ContentViewModel}" />

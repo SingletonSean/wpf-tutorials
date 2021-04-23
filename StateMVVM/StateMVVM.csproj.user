@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\GlobalMessageBanner.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -24,6 +27,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\GlobalMessageBanner.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\Layout.xaml">
       <SubType>Designer</SubType>
     </Page>
