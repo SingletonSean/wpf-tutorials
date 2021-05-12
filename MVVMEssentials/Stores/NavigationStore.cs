@@ -1,11 +1,9 @@
-﻿using NavigationMVVM.ViewModels;
+﻿using MVVMEssentials.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace NavigationMVVM.Stores
+namespace MVVMEssentials.Stores
 {
-    public class NavigationStore
+    public class NavigationStore : INavigationStore
     {
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel

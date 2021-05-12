@@ -6,12 +6,12 @@
 
   <PropertyGroup>
     <PackageId>MVVMEssentials.WPF</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>SingletonSean</Authors>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <RepositoryUrl>https://github.com/SingletonSean/wpf-tutorials</RepositoryUrl>
     <PackageProjectUrl>https://github.com/SingletonSean/wpf-tutorials</PackageProjectUrl>
-    <PackageTags>wpf mvvm essentials command view model notify property changed async errors</PackageTags>
+    <PackageTags>wpf mvvm essentials command view model notify property changed async errors navigation modal</PackageTags>
     <Description>
       Common essentials for a WPF MVVM applications.
     </Description>
