@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomObservableCollections
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimationDemo", "AnimationDemo\AnimationDemo.csproj", "{1C91809C-C442-4258-90DD-1372BC51B49F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationMVVMEssentialsDemo", "NavigationMVVMEssentialsDemo\NavigationMVVMEssentialsDemo.csproj", "{C21EA63A-5270-422B-A426-9D642022B45E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NavigationMVVMEssentialsDemo", "NavigationMVVMEssentialsDemo\NavigationMVVMEssentialsDemo.csproj", "{C21EA63A-5270-422B-A426-9D642022B45E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFMVVMTemplate", "WPFMVVMTemplate\WPFMVVMTemplate.csproj", "{7AC10C59-2A97-4001-91A4-D824962D9E99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{C21EA63A-5270-422B-A426-9D642022B45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C21EA63A-5270-422B-A426-9D642022B45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C21EA63A-5270-422B-A426-9D642022B45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC10C59-2A97-4001-91A4-D824962D9E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC10C59-2A97-4001-91A4-D824962D9E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC10C59-2A97-4001-91A4-D824962D9E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC10C59-2A97-4001-91A4-D824962D9E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
