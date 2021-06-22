@@ -23,6 +23,9 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
+                <Trigger Property="local:NavigationBar.IsActive" Value="False">
+                    <Setter Property="Opacity" Value="0.7" />
+                </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -36,7 +39,10 @@
         </Style>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Grid MaxWidth="1000" Margin="20 10">
+    <Grid
+        MaxWidth="1000"
+        Margin="20 10"
+        TextBlock.FontSize="18">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="auto" />
@@ -48,19 +54,20 @@
 
         <TextBlock
             Grid.Column="0"
-            FontSize="14"
             Foreground="White"
             Text="Navigation Demo" />
 
         <Button
             Grid.Column="1"
             Margin="10 0 0 0"
+            local:NavigationBar.IsActive="{Binding IsHomeActive}"
             Command="{Binding NavigateHomeCommand}"
             Content="Home" />
 
         <Button
             Grid.Column="2"
             Margin="10 0 0 0"
+            local:NavigationBar.IsActive="{Binding IsPeopleListingActive}"
             Command="{Binding NavigatePeopleListingCommand}"
             Content="People" />
 
@@ -73,6 +80,7 @@
         <Button
             Grid.Column="4"
             Margin="10 0 0 0"
+            local:NavigationBar.IsActive="{Binding IsAccountActive}"
             Command="{Binding NavigateAccountCommand}"
             Content="Account"
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}" />
