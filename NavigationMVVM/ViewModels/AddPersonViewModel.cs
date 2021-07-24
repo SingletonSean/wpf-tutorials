@@ -27,9 +27,9 @@ namespace NavigationMVVM.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public AddPersonViewModel(PeopleStore peopleStore, INavigationService closeNavigationService)
+        public AddPersonViewModel(INavigationService submitNavigationService, INavigationService closeNavigationService)
         {
-            SubmitCommand = new AddPersonCommand(this, peopleStore, closeNavigationService);
+            SubmitCommand = new NavigateCommand(submitNavigationService);
             CancelCommand = new NavigateCommand(closeNavigationService);
         }
     }

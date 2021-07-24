@@ -32,9 +32,8 @@ namespace NavigationMVVM
                 s.GetRequiredService<PeopleStore>(),
                 CreateAddPersonNavigationService(s)));
             services.AddTransient<AddPersonViewModel>(s => new AddPersonViewModel(
-                s.GetRequiredService<PeopleStore>(),
-                s.GetRequiredService<CloseModalNavigationService>()
-                ));
+                CreateAddPersonNavigationService(s),
+                s.GetRequiredService<CloseModalNavigationService>()));
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
             services.AddSingleton<MainViewModel>();
 

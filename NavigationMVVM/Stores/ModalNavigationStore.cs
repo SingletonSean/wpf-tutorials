@@ -7,15 +7,18 @@ namespace NavigationMVVM.Stores
 {
     public class ModalNavigationStore
     {
-        private ViewModelBase _currentViewModel;
+        private readonly Stack<ViewModelBase> _viewModelHistory;
+
         public ViewModelBase CurrentViewModel
         {
-            get => _currentViewModel;
-            set
+            get
             {
-                _currentViewModel?.Dispose();
-                _currentViewModel = value;
-                OnCurrentViewModelChanged();
+                if (_viewModelHistory.Count == 0)
+                {
+                    return null;
+                }
+
+                return _viewModelHistory.Peek();
             }
         }
 
@@ -23,9 +26,39 @@ namespace NavigationMVVM.Stores
 
         public event Action CurrentViewModelChanged;
 
+        public ModalNavigationStore()
+        {
+            _viewModelHistory = new Stack<ViewModelBase>();
+        }
+
+        public void Push(ViewModelBase viewModel)
+        {
+            _viewModelHistory.Push(viewModel);
+            OnCurrentViewModelChanged();
+        }
+
+        public void Pop()
+        {
+            if (_viewModelHistory.Count == 0)
+            {
+                return;
+            }
+
+            ViewModelBase previousViewModel = _viewModelHistory.Pop();
+            previousViewModel.Dispose();
+
+            OnCurrentViewModelChanged();
+        }
+
         public void Close()
         {
-            CurrentViewModel = null;
+            while (_viewModelHistory.Count > 0)
+            {
+                ViewModelBase previousViewModel = _viewModelHistory.Pop();
+                previousViewModel.Dispose();
+            }
+
+            OnCurrentViewModelChanged();
         }
 
         private void OnCurrentViewModelChanged()

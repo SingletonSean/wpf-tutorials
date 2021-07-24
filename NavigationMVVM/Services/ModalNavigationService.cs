@@ -20,7 +20,7 @@ namespace NavigationMVVM.Services
 
         public void Navigate()
         {
-            _navigationStore.CurrentViewModel = _createViewModel();
+            _navigationStore.Push(_createViewModel());
         }
     }
 }
