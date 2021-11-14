@@ -16,29 +16,37 @@
 
         <TextBox Grid.Row="0" Text="{Binding EmployeesFilter, UpdateSourceTrigger=PropertyChanged}" />
 
-        <ListView Grid.Row="1" Margin="0 10 0 0"
-            BorderThickness="0"
-            ItemsSource="{Binding EmployeesCollectionView}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn>
-                        <GridViewColumnHeader Content="Name" />
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Padding="0 0 50 0" Text="{Binding Name}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn>
-                        <GridViewColumnHeader Content="Title" />
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Padding="0 0 50 0" Text="{Binding JobTitle}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Border
+            Grid.Row="1"
+            Margin="0 10 0 0"
+            Padding="5"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="5">
+            <ListView
+                BorderThickness="0"
+                ItemsSource="{Binding EmployeesCollectionView}"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                            <TextBlock Grid.Column="1" Text="..." />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
     </Grid>
 </UserControl>

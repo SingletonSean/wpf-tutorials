@@ -1,0 +1,56 @@
+﻿<Window
+    x:Class="ConditionalRendering.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ConditionalRendering"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Conditional Rendering"
+    Width="325"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid Margin="25" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <CheckBox
+            x:Name="cbShowMessage"
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Content="Show Message?" />
+
+        <TextBlock
+            Grid.Row="1"
+            Margin="0 25 0 0"
+            HorizontalAlignment="Center"
+            FontSize="32"
+            Text="Hello world!"
+            Visibility="{Binding IsChecked, ElementName=cbShowMessage, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <TextBlock
+            Grid.Row="2"
+            Margin="0 25 0 0"
+            HorizontalAlignment="Center"
+            FontSize="32"
+            Text="Hello world!">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=cbShowMessage}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+</Window>
