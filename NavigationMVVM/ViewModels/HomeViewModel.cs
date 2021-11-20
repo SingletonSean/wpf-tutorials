@@ -11,10 +11,10 @@ namespace NavigationMVVM.ViewModels
 
         public ICommand NavigateLoginCommand { get; }
 
-        public HomeViewModel(AccountStore accountStore, NavigationStore navigationStore)
+        public HomeViewModel(NavigationStore navigationStore)
         {
             NavigateLoginCommand = new NavigateCommand<LoginViewModel>(new NavigationService<LoginViewModel>(
-                navigationStore, () => new LoginViewModel(accountStore, navigationStore)));
+                navigationStore, () => new LoginViewModel(navigationStore)));
         }
     }
 }

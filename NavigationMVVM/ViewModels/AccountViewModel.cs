@@ -8,19 +8,19 @@ namespace NavigationMVVM.ViewModels
 {
     public class AccountViewModel : ViewModelBase
     {
-        private readonly AccountStore _accountStore;
+        private readonly Account _account;
 
-        public string Username => _accountStore.CurrentAccount?.Username;
-        public string Email => _accountStore.CurrentAccount?.Email;
+        public string Username => _account?.Username;
+        public string Email => _account?.Email;
 
         public ICommand NavigateHomeCommand { get; }
 
-        public AccountViewModel(AccountStore accountStore, NavigationStore navigationStore)
+        public AccountViewModel(Account account, NavigationStore navigationStore)
         {
-            _accountStore = accountStore;
+            _account = account;
 
             NavigateHomeCommand = new NavigateCommand<HomeViewModel>(new NavigationService<HomeViewModel>(
-                navigationStore, () => new HomeViewModel(accountStore, navigationStore)));
+                navigationStore, () => new HomeViewModel(navigationStore)));
         }
     }
 }
