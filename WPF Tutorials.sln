@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NavigationMVVMEssentialsDem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFMVVMTemplate", "WPFMVVMTemplate\WPFMVVMTemplate.csproj", "{7AC10C59-2A97-4001-91A4-D824962D9E99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionalRendering", "ConditionalRendering\ConditionalRendering.csproj", "{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionalRendering", "ConditionalRendering\ConditionalRendering.csproj", "{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingShort", "BindingShort\BindingShort.csproj", "{885254CD-BFDC-44C4-AA79-DEE8D50F590D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
