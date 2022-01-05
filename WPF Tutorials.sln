@@ -49,7 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFMVVMTemplate", "WPFMVVMT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionalRendering", "ConditionalRendering\ConditionalRendering.csproj", "{8F4F15D3-B682-458C-B0EE-7D1AC4A47C0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingShort", "BindingShort\BindingShort.csproj", "{885254CD-BFDC-44C4-AA79-DEE8D50F590D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingShort", "BindingShort\BindingShort.csproj", "{885254CD-BFDC-44C4-AA79-DEE8D50F590D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsControlDemo", "ItemsControlDemo\ItemsControlDemo.csproj", "{5D9D3567-5489-482D-8CAA-D6F4B70C6485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{885254CD-BFDC-44C4-AA79-DEE8D50F590D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
