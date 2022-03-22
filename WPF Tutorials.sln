@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29123.88
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchingViewsMVVM", "SwitchingViewsMVVM\SwitchingViewsMVVM.csproj", "{D72D1C4E-BF83-446F-8E13-A806D1EA7998}"
 EndProject
@@ -51,7 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConditionalRendering", "Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingShort", "BindingShort\BindingShort.csproj", "{885254CD-BFDC-44C4-AA79-DEE8D50F590D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsControlDemo", "ItemsControlDemo\ItemsControlDemo.csproj", "{5D9D3567-5489-482D-8CAA-D6F4B70C6485}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsControlDemo", "ItemsControlDemo\ItemsControlDemo.csproj", "{5D9D3567-5489-482D-8CAA-D6F4B70C6485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardMVVM", "DashboardMVVM\DashboardMVVM.csproj", "{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D9D3567-5489-482D-8CAA-D6F4B70C6485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

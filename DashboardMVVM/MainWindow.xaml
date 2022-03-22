@@ -1,0 +1,17 @@
+﻿<Window
+    x:Class="DashboardMVVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:DashboardMVVM.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DashboardMVVM"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:DashboardMVVM.Views"
+    Title="Dashboard"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <views:Dashboard />
+    </Grid>
+</Window>

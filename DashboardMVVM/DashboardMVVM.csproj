@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	<XamlDebuggingInformation>True</XamlDebuggingInformation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MVVMEssentials.WPF" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>
