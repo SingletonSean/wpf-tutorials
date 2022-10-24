@@ -53,7 +53,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BindingShort", "BindingShor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsControlDemo", "ItemsControlDemo\ItemsControlDemo.csproj", "{5D9D3567-5489-482D-8CAA-D6F4B70C6485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardMVVM", "DashboardMVVM\DashboardMVVM.csproj", "{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DashboardMVVM", "DashboardMVVM\DashboardMVVM.csproj", "{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C05C9D0F-F86F-4304-9F75-E825AB39C4CB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EffectiveValidation", "EffectiveValidation\EffectiveValidation.csproj", "{93AD02E5-4257-4CBC-9495-50A381C2F9C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +172,10 @@ Global
 		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6E7E79-3857-4BB4-9C7B-4F8E46958DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93AD02E5-4257-4CBC-9495-50A381C2F9C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93AD02E5-4257-4CBC-9495-50A381C2F9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93AD02E5-4257-4CBC-9495-50A381C2F9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93AD02E5-4257-4CBC-9495-50A381C2F9C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

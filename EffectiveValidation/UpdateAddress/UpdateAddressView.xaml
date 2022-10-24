@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="EffectiveValidation.UpdateAddress.UpdateAddressView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EffectiveValidation.UpdateAddress"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid MaxWidth="500" Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            FontSize="28"
+            Text="Update Address" />
+
+        <StackPanel Grid.Row="1" Margin="0 40 0 0">
+            <TextBlock Text="Address Line 1" />
+            <TextBox Margin="0 2 0 0" Text="{Binding AddressLine1, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0 20 0 0">
+            <TextBlock Text="Address Line 2" />
+            <TextBox Margin="0 2 0 0" Text="{Binding AddressLine2, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0 20 0 0">
+            <TextBlock Text="City" />
+            <TextBox Margin="0 2 0 0" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Margin="0 20 0 0">
+            <TextBlock Text="State" />
+            <TextBox Margin="0 2 0 0" Text="{Binding State, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Margin="0 20 0 0">
+            <TextBlock Text="Zip Code" />
+            <TextBox Margin="0 2 0 0" Text="{Binding ZipCode, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <Button
+            Grid.Row="6"
+            Margin="0 40 0 0"
+            Padding="20 5"
+            HorizontalAlignment="Left"
+            Command="{Binding UpdateAddressCommand}"
+            Content="Update" />
+    </Grid>
+</UserControl>
