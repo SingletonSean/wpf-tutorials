@@ -17,6 +17,13 @@ namespace EffectiveValidation.UpdateAddress
 
         public void Execute(object? parameter)
         {
+            _viewModel.Validate();
+
+            if (_viewModel.HasErrors)
+            {
+                return;
+            }
+
             try
             {
                 Address address = new Address(

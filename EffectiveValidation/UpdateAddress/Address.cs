@@ -1,7 +1,11 @@
-﻿namespace EffectiveValidation.UpdateAddress
+﻿using FluentValidation;
+
+namespace EffectiveValidation.UpdateAddress
 {
-    public class Address
+    public class Address : IAddress
     {
+        private readonly AddressValidator _validator = new AddressValidator();
+
         public string AddressLine1 { get; }
         public string AddressLine2 { get; }
         public string City { get; }
@@ -15,6 +19,8 @@
             City = city;
             State = state;
             ZipCode = zipCode;
+
+            _validator.Validate(this, o => o.ThrowOnFailures());
         }
     }
 }

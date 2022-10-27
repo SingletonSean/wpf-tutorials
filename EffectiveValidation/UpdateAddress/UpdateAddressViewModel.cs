@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +11,10 @@ using System.Windows.Input;
 
 namespace EffectiveValidation.UpdateAddress
 {
-    public class UpdateAddressViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
+    public class UpdateAddressViewModel : INotifyPropertyChanged, INotifyDataErrorInfo, IAddress
     {
+        private readonly AddressValidator _validator = new AddressValidator();
+
         private string _addressLine1 = string.Empty;
         public string AddressLine1
         {
@@ -22,6 +26,8 @@ namespace EffectiveValidation.UpdateAddress
             {
                 _addressLine1 = value;
                 OnPropertyChanged(nameof(AddressLine1));
+
+                ValidateProperty(nameof(AddressLine1));
             }
         }
 
@@ -36,6 +42,8 @@ namespace EffectiveValidation.UpdateAddress
             {
                 _addressLine2 = value;
                 OnPropertyChanged(nameof(AddressLine2));
+
+                ValidateProperty(nameof(AddressLine2));
             }
         }
 
@@ -50,6 +58,8 @@ namespace EffectiveValidation.UpdateAddress
             {
                 _city = value;
                 OnPropertyChanged(nameof(City));
+
+                ValidateProperty(nameof(City));
             }
         }
 
@@ -64,6 +74,8 @@ namespace EffectiveValidation.UpdateAddress
             {
                 _state = value;
                 OnPropertyChanged(nameof(State));
+
+                ValidateProperty(nameof(State));
             }
         }
 
@@ -78,6 +90,8 @@ namespace EffectiveValidation.UpdateAddress
             {
                 _zipCode = value;
                 OnPropertyChanged(nameof(ZipCode));
+
+                ValidateProperty(nameof(ZipCode));
             }
         }
 
@@ -86,6 +100,34 @@ namespace EffectiveValidation.UpdateAddress
         public UpdateAddressViewModel()
         {
             UpdateAddressCommand = new UpdateAddressCommand(this, new UserRepository());
+        }
+
+        public void Validate()
+        {
+            ClearErrors();
+
+            ValidationResult result = _validator.Validate(this);
+
+            IEnumerable<ValidationFailure> errors = result.Errors.DistinctBy(e => e.PropertyName);
+
+            foreach (ValidationFailure error in errors)
+            {
+                AddError(error.PropertyName, error.ErrorMessage);
+            }
+        }
+
+        private void ValidateProperty(string propertyName)
+        {
+            ClearErrors(propertyName);
+
+            ValidationResult result = _validator.Validate(this, o => o.IncludeProperties(propertyName));
+
+            if (result.Errors.Any())
+            {
+                string firstErrorMessage = result.Errors.First().ErrorMessage;
+
+                AddError(propertyName, firstErrorMessage);
+            }
         }
 
         #region INotifyPropertyChanged
@@ -123,6 +165,12 @@ namespace EffectiveValidation.UpdateAddress
             OnErrorsChanged(propertyName);
         }
 
+        public void ClearErrors()
+        {
+            _propertyErrors.Clear();
+            OnErrorsChanged();
+        }
+
         public void ClearErrors(string propertyName)
         {
             if (_propertyErrors.Remove(propertyName))
@@ -131,7 +179,7 @@ namespace EffectiveValidation.UpdateAddress
             }
         }
 
-        private void OnErrorsChanged(string propertyName)
+        private void OnErrorsChanged(string? propertyName = null)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }

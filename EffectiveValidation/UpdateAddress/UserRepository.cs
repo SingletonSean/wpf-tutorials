@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EffectiveValidation.UpdateAddress
+﻿namespace EffectiveValidation.UpdateAddress
 {
     public class UserRepository
     {
