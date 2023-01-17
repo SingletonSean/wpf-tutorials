@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="MvvmToolkitDemo.Features.AddShoppingListItem.AddShoppingListItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MvvmToolkitDemo.Features.AddShoppingListItem"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock FontSize="24" Text="Add Shopping List Item" />
+
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontWeight="Bold" Text="Name" />
+            <TextBox
+                Margin="0,2,0,0"
+                Padding="2"
+                Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <Button
+            Margin="0,25,0,0"
+            Padding="10,5"
+            HorizontalAlignment="Left"
+            Command="{Binding AddShoppingListItemCommand}"
+            Content="Add Item"
+            IsDefault="True" />
+    </StackPanel>
+</UserControl>
