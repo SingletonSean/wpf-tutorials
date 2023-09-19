@@ -9,7 +9,7 @@ namespace MVVMEssentials.Services
         private readonly NavigationStore _navigationStore;
         private readonly CreateViewModel<TParameter, TViewModel> _createViewModel;
 
-        public ParameterNavigationService(NavigationStore navigationStore, CreateViewModel<TParameter, TViewModel> createViewModel)
+        public ParameterNavigationService(INavigationStore navigationStore, CreateViewModel<TParameter, TViewModel> createViewModel)
         {
             _navigationStore = navigationStore;
             _createViewModel = createViewModel;
